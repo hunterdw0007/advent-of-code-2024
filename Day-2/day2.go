@@ -11,7 +11,8 @@ import (
 func main() {
 	fmt.Println("Day 2")
 
-	safeReports := 0
+	safeReportsCount := 0
+	safeReportsCountDampened := 0
 
 	file, _ := os.Open("data.txt")
 	defer file.Close()
@@ -29,11 +30,33 @@ func main() {
 
 		if checkReport(&report) {
 			//fmt.Printf("%v\n", report)
-			safeReports++
+			safeReportsCount++
+		} else if checkReportDampened(&report) {
+			safeReportsCountDampened++
 		}
 	}
 
-	fmt.Printf("Safe Reports: %v\n", safeReports)
+	fmt.Printf("Safe Reports: %v\n", safeReportsCount)
+
+	totalSafeReports := safeReportsCount + safeReportsCountDampened
+
+	fmt.Printf("Safe Reports Dampened: %v\n", totalSafeReports)
+
+}
+
+func checkReportDampened(report *[]int) bool {
+	valid := false
+	for i := range *report {
+		modifiedReport := make([]int, 0, len(*report))
+		modifiedReport = append(modifiedReport, (*report)[:i]...)
+		modifiedReport = append(modifiedReport, (*report)[i+1:]...)
+		//fmt.Println(modifiedReport)
+		valid = checkReport(&modifiedReport)
+		if valid {
+			break
+		}
+	}
+	return valid
 }
 
 func checkReport(report *[]int) bool {
