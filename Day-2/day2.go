@@ -46,6 +46,9 @@ func numberCounts(list *map[int]int, num int) {
 }
 
 func compareLists(list *[]int, counts *map[int]int) int {
-	//TODO
-	return 0
+	simScore := 0
+	for _, element := range *list {
+		simScore += element * (*counts)[element]
+	}
+	return simScore
 }
