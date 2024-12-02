@@ -46,13 +46,17 @@ func main() {
 
 func checkReportDampened(report *[]int) bool {
 	valid := false
+	// Loop through and check each list removing one element at a time
 	for i := range *report {
 		modifiedReport := make([]int, 0, len(*report))
 		modifiedReport = append(modifiedReport, (*report)[:i]...)
 		modifiedReport = append(modifiedReport, (*report)[i+1:]...)
-		//fmt.Println(modifiedReport)
+
 		valid = checkReport(&modifiedReport)
+		// If it's valid with this modification early exit
 		if valid {
+			// fmt.Println("Original: ", *report)
+			// fmt.Println("Modified: ", modifiedReport)
 			break
 		}
 	}
