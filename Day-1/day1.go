@@ -10,7 +10,7 @@ import (
 
 func main() {
 	fmt.Println("Day 1")
-	file, _ := os.Open("data.txt")
+	file, _ := os.Open("../data.txt")
 	defer file.Close()
 
 	firstNumbers := make([]int, 0)
