@@ -10,11 +10,12 @@ import (
 
 func main() {
 	fmt.Println("Day 1")
-	file, _ := os.Open("../data.txt")
+	file, _ := os.Open("data.txt")
 	defer file.Close()
 
 	firstNumbers := make([]int, 0)
 	secondNumbers := make([]int, 0)
+	numberCountMap := make(map[int]int)
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
@@ -25,17 +26,19 @@ func main() {
 
 		insertSort(&firstNumbers, first)
 		insertSort(&secondNumbers, second)
+		numberCounts(&numberCountMap, second)
 	}
 
 	output := compareLists(&firstNumbers, &secondNumbers)
 
-	fmt.Printf("Difference: %v\n", output)
+	fmt.Printf("Total Difference: %v\n", output)
 
-	output = compareLists(&secondNumbers, &firstNumbers)
+	output = compareMap(&firstNumbers, &numberCountMap)
 
-	fmt.Printf("Sanity Check: %v\n", output)
+	fmt.Printf("Similarity Score: %v\n", output)
 }
 
+// This function inserts each element as it is read into sorted position
 func insertSort(list *[]int, num int) {
 	*list = append(*list, num)
 	i := len((*list)) - 1
@@ -45,6 +48,7 @@ func insertSort(list *[]int, num int) {
 	}
 }
 
+// This compares the two lists and calculates the total difference between each element
 func compareLists(first *[]int, second *[]int) int {
 	totalDiff := 0
 	for index := range *first {
@@ -55,4 +59,26 @@ func compareLists(first *[]int, second *[]int) int {
 		totalDiff += diff
 	}
 	return totalDiff
+}
+
+// This will either add a new key to the map if it doesn't already exist and assign it to value 1
+// or it will increment the value of that key this getting the count of each number
+func numberCounts(list *map[int]int, num int) {
+	if (*list)[num] == 0 {
+		(*list)[num] = 1
+		return
+	}
+	if (*list)[num] != 0 {
+		(*list)[num]++
+		return
+	}
+}
+
+// This will multiply each element in the first list with its count in the map getting the similarity score
+func compareMap(list *[]int, counts *map[int]int) int {
+	simScore := 0
+	for _, element := range *list {
+		simScore += element * (*counts)[element]
+	}
+	return simScore
 }
