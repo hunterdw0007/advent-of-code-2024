@@ -42,28 +42,6 @@ Advent of Code is an annual set of Christmas-themed programming challenges that 
 | [Day 2](https://adventofcode.com/2024/day/2) | ⭐ | ⭐ | [Solution](Day-2/day2.go) |
 <!-- Add more days as you complete them -->
 
-## 💻 Structure
-
-Each day's solution is in its own directory with the following structure:
-```
-Day-XX/
-  ├── data.txt
-  ├── dayX.go
-  ├── go.mod
-  └── main.rs
-```
-
-## 🛠️ Running the Solutions
-
-To run any day's solution:
-
-```bash
-cd Day-XX
-go run .
-rustc main.rs
-./main
-```
-
 ## 🌟 Goals for 2024
 
 - [ ] Complete all 25 days
