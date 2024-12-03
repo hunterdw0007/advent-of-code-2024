@@ -49,7 +49,8 @@ Each day's solution is in its own directory with the following structure:
 Day-XX/
   ├── data.txt
   ├── dayX.go
-  └── go.mod
+  ├── go.mod
+  └── main.rs
 ```
 
 ## 🛠️ Running the Solutions
@@ -59,6 +60,8 @@ To run any day's solution:
 ```bash
 cd Day-XX
 go run .
+rustc main.rs
+./main
 ```
 
 ## 🌟 Goals for 2024
