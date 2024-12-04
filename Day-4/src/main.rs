@@ -38,6 +38,64 @@ fn main() {
     // Add bottom row of #
     padded.push(vec!['#'; grid[0].len() + 2]);
     
+    let xmas_total = xmas_total(&padded);
+
+    println!("Total XMAS: {}", xmas_total);
+
+    let x_mas_total = x_mas_total(&padded);
+    println!("Total X-MAS: {}", x_mas_total);
+}
+
+fn x_mas_total(padded: &Vec<Vec<char>>) -> i32 {
+    let mut x_mas_total = 0;
+    for (lnum, line) in padded.iter().enumerate() {
+        for (cnum, char) in line.iter().enumerate() {
+            if padded[lnum][cnum] == 'A'
+            {
+                // M  
+                //  A 
+                //   S
+                if padded[lnum - 1][cnum - 1] == 'M' && padded[lnum + 1][cnum + 1] == 'S' {
+                    // M M
+                    //  A 
+                    // S S
+                    if padded[lnum - 1][cnum + 1] == 'M' && padded[lnum + 1][cnum - 1] == 'S' {
+                        x_mas_total += 1;
+                    }
+                    // M S
+                    //  A 
+                    // M S
+                    if padded[lnum - 1][cnum + 1] == 'S' && padded[lnum + 1][cnum - 1] == 'M' {
+                        x_mas_total += 1;
+                    }
+
+                }
+                // S  
+                //  A 
+                //   M
+                if padded[lnum - 1][cnum - 1] == 'S' && padded[lnum + 1][cnum + 1] == 'M' {
+                    // M M
+                    //  A 
+                    // S S
+                    if padded[lnum - 1][cnum + 1] == 'M' && padded[lnum + 1][cnum - 1] == 'S' {
+                        x_mas_total += 1;
+                    }
+                    // M S
+                    //  A 
+                    // M S
+                    if padded[lnum - 1][cnum + 1] == 'S' && padded[lnum + 1][cnum - 1] == 'M' {
+                        x_mas_total += 1;
+                    }
+
+                }
+            }
+        
+        }
+    }
+    x_mas_total
+}
+
+fn xmas_total(padded: &Vec<Vec<char>>) -> i32 {
     let mut xmas_total = 0;
     for (lnum, line) in padded.iter().enumerate() {
         for (cnum, char) in line.iter().enumerate() {
@@ -107,6 +165,5 @@ fn main() {
             }
         }
     }
-
-    println!("Total XMAS: {}", xmas_total);
-}
+    xmas_total
+    }
