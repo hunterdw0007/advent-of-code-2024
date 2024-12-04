@@ -32,7 +32,9 @@ fn main() {
 
     println!("Total: {}", mul_total);
 
-    println!("Enabled Total: {}", enabled_total(&s));
+    //println!("Enabled Total: {}", enabled_total(&s));
+
+    println!("Improved Enabled Total: {}", improved(&s));
 }
 
 fn enabled_total(instructions: &String) -> i32 {
@@ -99,4 +101,35 @@ fn handle_do(mat: &Match) -> bool {
     } else {
         false // no match at all
     }
+}
+
+fn improved(instructions: &String) -> i32 {
+    let regex = Regex::new(r"mul\((\d{1,3}),(\d{1,3})\)|do\(\)|don't\(\)").unwrap();
+    let mut pos = 0;
+    let mut total = 0;
+    let mut enabled = true;
+
+    while pos < instructions.len() {
+        let mat = match regex.find_at(&instructions, pos) {
+            Some(m) => m,
+            None => break
+        };
+        //println!("Position {} | Enabled {} | Match {} found at {}", pos, enabled, mat.as_str(), mat.start());
+
+        if mat.as_str() == "do()" {
+            enabled = true;
+        }
+        else if mat.as_str() == "don't()" {
+            enabled = false;
+        }
+        // We can multiply and it's a mul instruction
+        else if enabled && mat.as_str().starts_with("mul(") {
+            let caps = regex.captures(&mat.as_str()).unwrap();
+            //println!("Found match: {} with numbers {} and {}", full, first, second);
+            total += caps.get(1).unwrap().as_str().parse::<i32>().unwrap() * caps.get(2).unwrap().as_str().parse::<i32>().unwrap();
+        }
+        // Move past the instruction
+        pos = mat.start() + mat.as_str().len();
+    }
+    total
 }
