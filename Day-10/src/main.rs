@@ -5,7 +5,7 @@ use std::{
 };
 
 fn main() {
-    println!("Day 6");
+    println!("Day 10");
 
     let mut topo: Vec<Vec<u32>> = Vec::new();
 

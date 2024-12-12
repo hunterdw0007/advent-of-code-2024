@@ -11,7 +11,7 @@ struct Calibration {
 }
 
 fn main() {
-    println!("Day 6");
+    println!("Day 7");
 
     let mut calibrations: Vec<Calibration> = Vec::new();
 
