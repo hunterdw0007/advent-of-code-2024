@@ -37,11 +37,15 @@ fn main() {
     }
 
     //println!("{:?}", calibrations);
-    let add = |a: u64, b: u64| -> u64 { a + b };
-    let mul = |a: u64, b: u64| -> u64 { a * b };
-    let ops = vec![add, mul];
+    let mut total_p1 = 0;
+    let mut total_p2 = 0;
+    for calibration in calibrations {
+        total_p1 += solve(&calibration);
+        total_p2 += solve_2(&calibration);
+    }
 
-    let total_p1 = solve(calibrations, ops);
+    println!("Part 1 Total: {}", total_p1);
+    println!("Part 2 Total: {}", total_p2);
 }
 
 // The output is wrapped in a Result to allow matching on errors.
@@ -54,6 +58,61 @@ where
     Ok(io::BufReader::new(file).lines())
 }
 
-fn solve<T>(calibrations: Vec<Calibration>, operators: Vec<T>) -> u64 where T: Fn(u64, u64) -> u64 {
-    todo!()
+fn solve(calibration: &Calibration) -> u64 {
+    let nums = calibration.numbers.len(); // ex 6 numbers -> 5 operators
+
+    let num_combinations = 1 << (nums - 1);  // 2^(n-1) combinations
+
+    for i in 0..num_combinations {
+        let mut result = calibration.numbers[0];
+        
+        // Process each operation from left to right
+        for j in 1..nums {
+            // Check if bit is 0 (+) or 1 (*)
+            let operation_bit = (i >> (j - 1)) & 1;
+            
+            if operation_bit == 0 {
+                result += calibration.numbers[j];
+            } else {
+                result *= calibration.numbers[j];
+            }
+        }
+        if result == calibration.total {
+            return calibration.total;
+        }
+    }
+    return 0;
+}
+
+fn solve_2(calibration: &Calibration) -> u64 {
+    let nums = calibration.numbers.len(); // ex 6 numbers -> 5 operators
+
+    let num_combinations = 3_i64.pow((nums-1) as u32);  // 3^(n-1) combinations
+
+    for i in 0..num_combinations {
+        let mut result = calibration.numbers[0];
+        let mut temp = i;
+        // Process each operation from left to right
+        for j in 1..nums {
+            // Check if bit is 0 (+) or 1 (*)
+            let operation = temp % 3;
+            temp /= 3;
+            
+            match operation {
+                0 => result += calibration.numbers[j],
+                1 => result *= calibration.numbers[j],
+                2 => {
+                    let concat = format!("{}{}", result, calibration.numbers[j])
+                        .parse::<u64>()
+                        .unwrap();
+                    result = concat;
+                },
+                _ => unreachable!()
+            }
+        }
+        if result == calibration.total {
+            return calibration.total;
+        }
+    }
+    return 0;
 }
