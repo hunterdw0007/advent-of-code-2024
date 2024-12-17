@@ -33,16 +33,6 @@ fn main() {
     The program is 16 numbers which means we need 3*16 bits in the Initial A to get a valid answer
     This happens in reverse order i.e. the 3 LSB in A correspond to the last op code
      */
-    // let mut replicate: u64 = 0;
-    // for op in ops.clone().iter().rev() {
-    //     replicate <<= 3;
-    //     registers.0 = replicate;
-    //     while program(&mut registers, &ops)[0] != *op {
-    //         replicate += 1;
-    //         registers.0 = replicate;
-    //     }
-    //     println!("{:o}", replicate);
-    // }
 
     let mut replicate: u64 = 0;
     for (i, op) in ops.clone().iter().rev().enumerate() {
@@ -58,7 +48,7 @@ fn main() {
             replicate += 1;
             registers.0 = replicate;
         }
-        println!("{:o}", replicate);
+        //println!("{:o}", replicate);
     }
 
     println!("Replicate: {}", replicate);
@@ -82,17 +72,17 @@ fn program(registers: &mut (u64, u64, u64), ops: &Vec<u64>) -> Vec<u64> {
 
         match op {
             0 => {
-                registers.0 = registers.0 / (2_u64.pow(combo as u32));
+                registers.0 = registers.0 >> combo;
                 ptr += 1;
                 continue;
             }
             1 => {
-                registers.1 = registers.1 ^ (literal as u64);
+                registers.1 = registers.1 ^ literal;
                 ptr += 1;
                 continue;
             }
             2 => {
-                registers.1 = combo.rem_euclid(8);
+                registers.1 = combo % 8;
                 ptr += 1;
                 continue;
             }
@@ -111,24 +101,24 @@ fn program(registers: &mut (u64, u64, u64), ops: &Vec<u64>) -> Vec<u64> {
                 continue;
             }
             5 => {
-                out.push(combo.rem_euclid(8));
+                out.push(combo % 8);
                 ptr += 1;
                 continue;
             }
             6 => {
-                registers.1 = registers.0 / (2_u64.pow(combo as u32));
+                registers.1 = registers.0 >> combo;
                 ptr += 1;
                 continue;
             }
             7 => {
-                registers.2 = registers.0 / (2_u64.pow(combo as u32));
+                registers.2 = registers.0 >> combo;
                 ptr += 1;
                 continue;
             }
             _ => panic!(),
         }
     }
-    println!("{:?}", out);
+    //println!("{:?}", out);
     out
 }
 
