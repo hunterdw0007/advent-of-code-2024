@@ -44,12 +44,25 @@ Advent of Code is an annual set of Christmas-themed programming challenges that 
 | [Day 4](https://adventofcode.com/2024/day/4) | ⭐ | ⭐ | [Solution](Day-4/src/main.rs) |
 | [Day 5](https://adventofcode.com/2024/day/5) | ⭐ | ⭐ | [Solution](Day-5/src/main.rs) |
 | [Day 6](https://adventofcode.com/2024/day/6) | ⭐ |   | [Solution](Day-6/src/main.rs) |
-| [Day 7](https://adventofcode.com/2024/day/7) |   |   | [Solution](Day-7/src/main.rs) |
+| [Day 7](https://adventofcode.com/2024/day/7) | ⭐ | ⭐ | [Solution](Day-7/src/main.rs) |
+| [Day 8](https://adventofcode.com/2024/day/8) |   |   | [Solution](Day-8/src/main.rs) |
 | [Day 9](https://adventofcode.com/2024/day/9) | ⭐ | ⭐ | [Solution](Day-9/src/main.rs) |
 | [Day 10](https://adventofcode.com/2024/day/10) | ⭐ | ⭐ | [Solution](Day-10/src/main.rs) |
 | [Day 11](https://adventofcode.com/2024/day/11) | ⭐ | ⭐ | [Solution](Day-11/src/main.rs) |
+| [Day 12](https://adventofcode.com/2024/day/12) |   |   | [Solution](Day-12/src/main.rs) |
 | [Day 13](https://adventofcode.com/2024/day/13) | ⭐ | ⭐ | [Solution](Day-13/src/main.rs) |
-<!-- Add more days as you complete them -->
+| [Day 14](https://adventofcode.com/2024/day/14) | ⭐ | ⭐ | [Solution](Day-14/src/main.rs) |
+| [Day 15](https://adventofcode.com/2024/day/15) | ⭐ |   | [Solution](Day-15/src/main.rs) |
+| [Day 16](https://adventofcode.com/2024/day/16) | ⭐ |   | [Solution](Day-16/src/main.rs) |
+| [Day 17](https://adventofcode.com/2024/day/17) |   |   | [Solution](Day-17/src/main.rs) |
+| [Day 18](https://adventofcode.com/2024/day/18) |   |   | [Solution](Day-18/src/main.rs) |
+| [Day 19](https://adventofcode.com/2024/day/19) |   |   | [Solution](Day-19/src/main.rs) |
+| [Day 20](https://adventofcode.com/2024/day/20) |   |   | [Solution](Day-20/src/main.rs) |
+| [Day 21](https://adventofcode.com/2024/day/21) |   |   | [Solution](Day-21/src/main.rs) |
+| [Day 22](https://adventofcode.com/2024/day/22) |   |   | [Solution](Day-22/src/main.rs) |
+| [Day 23](https://adventofcode.com/2024/day/23) |   |   | [Solution](Day-23/src/main.rs) |
+| [Day 24](https://adventofcode.com/2024/day/24) |   |   | [Solution](Day-24/src/main.rs) |
+| [Day 25](https://adventofcode.com/2024/day/25) |   |   | [Solution](Day-25/src/main.rs) |
 
 ## 🌟 Goals for 2024
 
