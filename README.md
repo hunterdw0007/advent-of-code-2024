@@ -55,7 +55,7 @@ Advent of Code is an annual set of Christmas-themed programming challenges that 
 | [Day 15](https://adventofcode.com/2024/day/15) | ⭐ |   | [Solution](Day-15/src/main.rs) |
 | [Day 16](https://adventofcode.com/2024/day/16) | ⭐ |   | [Solution](Day-16/src/main.rs) |
 | [Day 17](https://adventofcode.com/2024/day/17) | ⭐ | ⭐ | [Solution](Day-17/src/main.rs) |
-| [Day 18](https://adventofcode.com/2024/day/18) |   |   | [Solution](Day-18/src/main.rs) |
+| [Day 18](https://adventofcode.com/2024/day/18) | ⭐ | ⭐ | [Solution](Day-18/src/main.rs) |
 | [Day 19](https://adventofcode.com/2024/day/19) |   |   | [Solution](Day-19/src/main.rs) |
 | [Day 20](https://adventofcode.com/2024/day/20) |   |   | [Solution](Day-20/src/main.rs) |
 | [Day 21](https://adventofcode.com/2024/day/21) |   |   | [Solution](Day-21/src/main.rs) |
