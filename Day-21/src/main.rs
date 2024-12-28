@@ -3,7 +3,7 @@ use std::fs::read_to_string;
 type Position = (usize, usize);
 type Grid = Vec<Vec<char>>;
 
-const ITERATIONS: usize = 2;
+const ITERATIONS: usize = 25;
 
 struct Pad {
     grid: Grid,
@@ -64,11 +64,13 @@ fn process_paths(input: &str, num_pad: &Pad, dir_pad: &Pad) -> Vec<Vec<char>> {
     input.lines()
         .map(|line| {
             let code: Vec<char> = line.chars().collect();
+            println!("Code: {}", code.iter().cloned().collect::<String>());
             let mut moves = num_pad.generate_moves(&code);
             
             // Apply dir_pad moves repeatedly
-            for _ in 0..ITERATIONS {
+            for i in 0..ITERATIONS {
                 moves = dir_pad.generate_moves(&moves);
+                println!("Iteration {}", i);
             }
             moves
         })
